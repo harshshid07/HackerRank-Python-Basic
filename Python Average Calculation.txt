@@ -1,0 +1,11 @@
+# WRITE PYTHON CODE TO CALCULATE AVERAGE OF 'n' Numbers
+# Implement 'avg' to define it's function
+# The result must contain a 'float' value as the average
+
+# Code Starts From Here:
+
+def avg(numbers):
+    return float(sum(numbers)) / len(numbers) if len(numbers) > 0 else 0.0
+
+average = avg(numbers)
+print("Average:", average)
