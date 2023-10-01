@@ -1,0 +1,48 @@
+# WRITE PYTHON CODE MAKING TWO CLASSES TO FIND AREA OF RECTANGLE AND CIRCLE
+# Use math.pi for Specific value of pi
+# The Rectangle class should pass two arguments and return one argument
+# The Circle class should pass one argument and return one argument
+# The Result must give the Correct Value for Area
+
+# Code Starts From Here:
+
+import math
+import os
+
+class Rectangle:
+    def calculate_area(self, length, breadth):
+        return length * breadth
+
+class Circle:
+    def calculate_area(self, radius):
+        return math.pi * radius * radius
+
+rectangle = Rectangle()
+circle = Circle()
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    q = int(input())
+    queries = []
+    
+    for _ in range(q):
+        args = input().split()
+        shape_name, params = args[0], tuple(map(int, args[1:]))
+        
+        if shape_name == "rectangle":
+            a, b = params[0], params[1]
+            area = rectangle.calculate_area(a, b)
+        elif shape_name == "circle":
+            r = params[0]
+            area = circle.calculate_area(r)
+        else:
+            raise ValueError("invalid shape type")
+        
+        # Append the area to the queries list
+        queries.append(area)
+    
+    # Write the results to the output file
+    for area in queries:
+        fptr.write("%.2f\n" % area)
+    
+    fptr.close()
